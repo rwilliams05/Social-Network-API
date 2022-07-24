@@ -45,13 +45,7 @@ thoughtSchema
         return this.reactions.length;
     });
 
-
-
-
-
-
-
 // Initialize our Thought model
-const Post = model('Thought', thoughtSchema);
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;
