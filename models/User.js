@@ -6,13 +6,13 @@ const validator = require("email-validator");
 const userSchema = new Schema(
     {
         username: {
-            type: string,
+            type: String,
             unique: true,
             required: true,
             trim: true,
         },
         email: {
-            type: string,
+            type: String,
             required: true,
             unique: true,
             validator: validator.validate,
@@ -25,14 +25,14 @@ const userSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'Thought',
             },
-
+        ],
             friends: [
                 {
                     type: Schema.Types.ObjectId,
                     ref: 'User',
                 },
-            ]
-        ],
+            ],
+        
     },
     {
         // Mongoose supports two Schema options to transform Objects after querying MongoDb: toJSON and toObject.
