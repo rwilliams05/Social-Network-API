@@ -15,7 +15,8 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,//moment or mongoose specific?
-            get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+            get: (formatDate) => moment(formatDate).format('MMM DD, YYYY [at] hh:mm a')
+                               
         },
         username: {
             type: String,
