@@ -26,13 +26,13 @@ const userSchema = new Schema(
                 ref: 'Thought',
             },
         ],
-            friends: [
-                {
-                    type: Schema.Types.ObjectId,
-                    ref: 'User',
-                },
-            ],
-        
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User',
+            },
+        ],
+
     },
     {
         // Mongoose supports two Schema options to transform Objects after querying MongoDb: toJSON and toObject.
@@ -45,6 +45,12 @@ const userSchema = new Schema(
     }
 );
 
+userSchema
+    .virtual('friendCount')
+    // Getter
+    .get(function () {
+        return this.friends.length;
+    });
 
 // Initialize our User model
 const User = model('user', userSchema);

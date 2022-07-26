@@ -16,7 +16,7 @@ const thoughtSchema = new Schema(
             type: Date,
             default: Date.now,//moment or mongoose specific?
             get: (formatDate) => moment(formatDate).format('MMM DD, YYYY [at] hh:mm a')
-                               
+
         },
         username: {
             type: String,
@@ -24,18 +24,19 @@ const thoughtSchema = new Schema(
         },
 
         reactions: [reactionSchema]
-            ,
+        ,
 
     },
     {
         toJSON: {
             virtuals: true,
+            getters: true,
         },
         id: false,
     }
 );
 
-// Create a virtual property `tagCount` that gets the amount of comments per user
+// Create a virtual property `reactionCount` that gets the amount of reactions per user
 thoughtSchema
     .virtual('reactionCount')
     // Getter
