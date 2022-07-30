@@ -22,8 +22,15 @@ const reactionSchema = new Schema({
         default: Date.now,//moment or mongoose specific?
         get: (formatDate) => moment(formatDate).format('MMM DD, YYYY [at] hh:mm a')
 
-    },
-      
-        
+    }
+},
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true,
+        },
+        id: false,
     });
+
+
 module.exports = reactionSchema
